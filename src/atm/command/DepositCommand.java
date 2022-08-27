@@ -8,7 +8,8 @@ import atm.command.Command;
 public class DepositCommand implements Command {
 
     @Inject
-    DepositCommand() {}
+    public DepositCommand() {}
+
 	@Override
 	public String key() {
 		return "deposit";

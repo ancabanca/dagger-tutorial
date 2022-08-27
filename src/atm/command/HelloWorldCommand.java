@@ -5,7 +5,7 @@ import javax.inject.Inject;
 
 public final class HelloWorldCommand implements Command {
     @Inject
-    HelloWorldCommand() {}
+    public HelloWorldCommand() {}
 
     @Override
     public String key() {
