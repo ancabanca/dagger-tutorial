@@ -7,16 +7,13 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import atm.command.Command;
-import atm.command.DepositCommand;
-import atm.command.HelloWorldCommand;
 
 final class CommandRouter {
     private final Map<String, Command> commands = new HashMap<>();
 
     @Inject
-    public CommandRouter(HelloWorldCommand helloWorldCommand, DepositCommand depositCommand) {
-        commands.put(helloWorldCommand.key(), helloWorldCommand);
-        commands.put(depositCommand.key(), depositCommand);
+    public CommandRouter(Command command) {
+        commands.put(command.key(), command);
     }
 
     Command.Status route(String input) {
