@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<project name="test" basedir=".">
+  <property name="user" value="anca"/>
+
+  <property name="src" value="src"/>
+  <property name="classes" value="build/classes"/>
+  <property name="build" value="build"/>
+  <property name="lib" value="build/lib"/>
+  <property name="lib3p" value="/Users/aburduce/w/lib"/>
+
+  <path id="classpath">
+    <fileset dir="${lib3p}">
+        <include name="**/*.jar" />
+    </fileset>
+    <fileset dir="${classes}">
+        <include name="*.class" />
+    </fileset>
+  </path>
+
+  <target name="clean">
+    <delete dir="build"/>
+  </target>
+
+  <target name="compile">
+    <mkdir dir="${build}"/>
+    <mkdir dir="${classes}"/>
+
+    <javac srcdir="${src}" destdir="${classes}">
+      <classpath refid="classpath"/>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <mkdir dir="${lib}"/>
+    <jar destfile="${lib}/Atm.jar" basedir="${classes}">
+      <manifest>
+        <attribute name="Main-Class" value="atm.CommandLineAtm"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="run" depends="jar">
+    <!-- This is needed here, so that the property value can be overriden from CLI, e.g. ant run -DyourName=Elena -->
+    <!-- A sysproperty will not be overriden using -Dargs, but a property will. -->
+    <property name="yourName" value="DefaultName" />
+    <java jar="${lib}/Atm.jar" fork="true">
+      <sysproperty key="yourName" value="${yourName}" />
+      <classpath refid="classpath"/>
+    </java>
+  </target>
+
+  <target name="cr" depends="clean,run" />
+
+  <target name="test">
+    <echo message="HELLO" />
+  </target>
+</project>
