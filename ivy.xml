@@ -1,0 +1,9 @@
+<ivy-module version="2.0">
+    <!-- See https://ant.apache.org/ivy/history/latest-milestone/tutorial/start.html -->
+    <info organisation="anca.tutorial" module="dagger.atm"/>
+    <dependencies>
+        <dependency org="javax.inject" name="javax.inject" rev="1"/>
+        <dependency org="com.google.dagger" name="dagger" rev="2.43.2"/>
+        <dependency org="com.google.dagger" name="dagger-compiler" rev="2.43.2"/>
+    </dependencies>
+</ivy-module>
