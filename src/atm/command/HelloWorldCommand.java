@@ -23,7 +23,9 @@ public final class HelloWorldCommand implements Command {
         if (!input.isEmpty()) {
             return Status.INVALID;
         }
-        System.out.println("world!");
+
+        this.outputter.output("world!");
+
         return Status.HANDLED;
     }
 }
