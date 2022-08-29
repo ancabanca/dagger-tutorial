@@ -16,7 +16,7 @@
    specific language governing permissions and limitations
    under the License.
 -->
-<project name="hello-ivy" default="run" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="hello-ivy" default="release" xmlns:ivy="antlib:org.apache.ivy.ant">
     <!-- some variables used -->
     <property name="lib.dir" value="lib"/>
     <property name="build.dir" value="build"/>
@@ -66,6 +66,8 @@
             <fileset dir="${basedir}/build"/>
         </delete>
     </target>
+
+    <target name="release" depends="clean,run" description="--> clean, compile and run the project" />
 
     <!-- =================================
           target: clean-cache

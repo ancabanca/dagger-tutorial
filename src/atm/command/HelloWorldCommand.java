@@ -3,9 +3,15 @@ package atm.command;
 import java.util.List;
 import javax.inject.Inject;
 
+import atm.Outputter;
+
 public final class HelloWorldCommand implements Command {
+    private final Outputter outputter;
+
     @Inject
-    public HelloWorldCommand() {}
+    public HelloWorldCommand(Outputter outputter) {
+        this.outputter = outputter;
+    }
 
     @Override
     public String key() {
